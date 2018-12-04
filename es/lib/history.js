@@ -1,10 +1,13 @@
 var _extends = function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var getLocation = function getLocation(source) {
-  return _extends({}, source.location, {
+  return {
+    pathname: source.location.pathname,
+    search: source.location.hash,
+    hash: source.location.hash,
     state: source.history.state,
-    key: source.history.state && source.history.state.key || "initial"
-  });
+    key: (source.history.state && source.history.state.key) || "initial"
+  };
 };
 
 var createHistory = function createHistory(source, options) {
